@@ -8,7 +8,9 @@
         "Description": "/pppp to open the UI and go from there. /pppp go to run.",
         "ApplicableVersion": "any",
         "Tags": [
-          "plugin",
+          "party",
+          "clubbing",
+          "social",
           "chat"
         ],
         "DalamudApiLevel": 6,
