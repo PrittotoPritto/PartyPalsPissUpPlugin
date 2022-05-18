@@ -1,0 +1,87 @@
+2022-05-13 02:49:23.543 +01:00 [INF] [PLUGINM] Plugin update OK.
+2022-05-13 02:49:44.000 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:44.000 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:44.000 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Prittoto Pritto
+2022-05-13 02:49:44.000 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:44.000 +01:00 [INF] [PissUpPlugin] RawText - Text: THE BEST GAME EVER!
+2022-05-13 02:49:44.100 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:44.100 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:44.100 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Prittoto Pritto
+2022-05-13 02:49:44.100 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:44.100 +01:00 [INF] [PissUpPlugin] RawText - Text: Roll and drink, with extras!
+2022-05-13 02:49:44.203 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:44.203 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:44.203 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Prittoto Pritto
+2022-05-13 02:49:44.203 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:44.203 +01:00 [INF] [PissUpPlugin] RawText - Text: Highest roll gets to ask the roller a question!
+2022-05-13 02:49:44.308 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:44.308 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:44.308 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Prittoto Pritto
+2022-05-13 02:49:44.308 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:44.308 +01:00 [INF] [PissUpPlugin] RawText - Text: GO!
+2022-05-13 02:49:51.831 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:51.831 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:51.831 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Prittoto Pritto
+2022-05-13 02:49:51.831 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:51.832 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateBegin
+2022-05-13 02:49:51.832 +01:00 [INF] [PissUpPlugin] RawText - Text: Lancer de dé
+2022-05-13 02:49:51.832 +01:00 [INF] [PissUpPlugin] Unknown - Data: 02 1D 01 03
+2022-05-13 02:49:51.832 +01:00 [INF] [PissUpPlugin] RawText - Text: ! 
+2022-05-13 02:49:51.832 +01:00 [INF] [PissUpPlugin] Icon - Dice
+2022-05-13 02:49:51.832 +01:00 [INF] [PissUpPlugin] RawText - Text: 39
+2022-05-13 02:49:51.832 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateEnd
+2022-05-13 02:49:55.329 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:55.329 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Sender Player - PlayerName: Cyrus Dirnea, ServerId: 56, ServerName: Phoenix
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: ♥Cyrus Dirnea
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Sender Unknown - Data: 02 27 07 CF 01 01 01 FF 01 03
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Sender Icon - CrossWorld
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Phoenix
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateBegin
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] RawText - Text: Lancer de dé
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Unknown - Data: 02 1D 01 03
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] RawText - Text: ! 
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Icon - Dice
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] RawText - Text: 258
+2022-05-13 02:49:55.330 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateEnd
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Prittoto Pritto
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateBegin
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] RawText - Text: Lancer d'un dé 20
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] Unknown - Data: 02 1D 01 03
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] RawText - Text: ! 
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] Icon - Dice
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] RawText - Text: 18
+2022-05-13 02:49:56.171 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateEnd
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Sender Player - PlayerName: Cyrus Dirnea, ServerId: 56, ServerName: Phoenix
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: ♥Cyrus Dirnea
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Sender Unknown - Data: 02 27 07 CF 01 01 01 FF 01 03
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Sender Icon - CrossWorld
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Phoenix
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateBegin
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] RawText - Text: Lancer d'un dé 20
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Unknown - Data: 02 1D 01 03
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] RawText - Text: ! 
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Icon - Dice
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] RawText - Text: 8
+2022-05-13 02:49:58.993 +01:00 [INF] [PissUpPlugin] Icon - AutoTranslateEnd
+2022-05-13 02:50:03.463 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:50:03.463 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:50:03.463 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Prittoto Pritto
+2022-05-13 02:50:03.463 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:50:03.463 +01:00 [INF] [PissUpPlugin] RawText - Text: Merci!
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] New Message
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] Sender
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] Sender Player - PlayerName: Cyrus Dirnea, ServerId: 56, ServerName: Phoenix
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: ♥Cyrus Dirnea
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] Sender Unknown - Data: 02 27 07 CF 01 01 01 FF 01 03
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] Sender Icon - CrossWorld
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] Sender RawText - Text: Phoenix
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] Body:
+2022-05-13 02:50:15.650 +01:00 [INF] [PissUpPlugin] RawText - Text: Un plaisir.

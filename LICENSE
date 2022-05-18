@@ -19,3 +19,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Tracery.Net is licenced under Apache-2.0 License
+I've modified it to avoid a yaml dependency.
+http://www.apache.org/licenses/LICENSE-2.0
+https://github.com/josh-perry/Tracery.Net
