@@ -2,11 +2,13 @@
   "Author": "Prittoto Pritto",
   "Name": "Prittoto Pritto's Party Pals Piss-up Plugin ♥",
   "InternalName": "PissUpPlugin",
-  "AssemblyVersion": "1.0.0.0",
+  "AssemblyVersion": "1.0.0.1",
   "Description": "/pppp to open the UI and go from there. I'll update this when there's more info.",
   "ApplicableVersion": "any",
   "Tags": [
-    "plugin",
+    "party",
+    "clubbing",
+    "social",
     "chat"
   ],
   "DalamudApiLevel": 6,
