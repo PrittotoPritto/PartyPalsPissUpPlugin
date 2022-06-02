@@ -25,6 +25,9 @@ namespace PissUpPlugin
             set { this.settingsVisible = value; }
         }
 
+        private string Error = "";
+        private DateTime ErrorDisplay = DateTime.MinValue;
+
         // passing in the image here just for simplicity
         public PluginUI(Configuration configuration)
         {
@@ -76,12 +79,62 @@ namespace PissUpPlugin
                 //++GameCount;
 
                 ImGui.Separator();
-                if (ImGui.Button("Save Plugin Config"))
+                if (ErrorDisplay > DateTime.Now)
                 {
-                    configuration.Save();
+                    ImGui.Text(Error);
+                }
+                else
+                {
+                    string Path = configuration.SavePath;
+                    if (ImGui.InputText("File Path", ref Path, 300, ImGuiInputTextFlags.None))
+                    {
+                        configuration.SavePath = Path;
+                    }
+                    if (ImGui.Button("Save"))
+                    {
+                        try
+                        {
+                            JSONSerialisation.SaveFile(configuration.SavePath, configuration.CurrentGame);
+                            throw new Exception("Save Successful");
+                        }
+                        catch (Exception e)
+                        {
+                            Error = e.Message;
+                            ErrorDisplay = DateTime.Now + TimeSpan.FromSeconds(3);
+                        }
+                    }
+                    ImGui.SameLine();
+                    if (ImGui.Button("Load"))
+                    {
+                        try
+                        {
+                            IGame? NewGame = JSONSerialisation.LoadFile(configuration.SavePath);
+                            if (NewGame != null)
+                            {
+                                configuration.CurrentGame = NewGame;
+                                throw new Exception("Load Successful");
+                            }
+                            else
+                            {
+                                throw new Exception("Could not load game");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Error = e.Message;
+                            ErrorDisplay = DateTime.Now + TimeSpan.FromSeconds(3);
+                        }
+                    }
                 }
 
             }
+
+            ImGui.Separator();
+            if (ImGui.Button("Save Plugin Config"))
+            {
+                configuration.Save();
+            }
+
             ImGui.End();
         }
     }

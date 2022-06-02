@@ -9,7 +9,7 @@ namespace PissUpPlugin
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
-        public int Version { get; set; } = 0;
+        public int Version { get; set; } = 1;
 
         public bool IsAlliance { get; set; } = false;
 
@@ -37,6 +37,8 @@ namespace PissUpPlugin
             },
             AdditionalActions = new List<Games.HighestAndLowest.ExtraActionInfo>()
         }; //So we can have more games later.
+
+        public string SavePath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
         // the below exist just to make saving less cumbersome
 

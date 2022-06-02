@@ -37,6 +37,9 @@ namespace PissUpPlugin
         public Configuration Configuration { get; init; }
         private PluginUI PluginUi { get; init; }
 
+        public delegate void DrawGameUI();
+        public event DrawGameUI GameUIDraw;
+
         //Running the game
         private Task? GameSessionInProgress = null;
 
@@ -166,6 +169,7 @@ namespace PissUpPlugin
         private void DrawUI()
         {
             this.PluginUi.Draw();
+            GameUIDraw?.Invoke();
         }
         
         private void DrawConfigUI()

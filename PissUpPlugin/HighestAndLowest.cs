@@ -18,8 +18,8 @@ namespace PissUpPlugin
         [Serializable]
         class HighestAndLowest : IGame
         {
-            public string Name { get; set; }
-            public string Tagline { get; set; }
+            public string Name { get; set; } = "Game Name";
+            public string Tagline { get; set; } = "Tagline";
             public uint DiceValue { get; set; }
             public uint Length { get; set; }
             public uint FinalCountdown { get; set; }
@@ -42,7 +42,7 @@ namespace PissUpPlugin
                 public uint Value { get; set; }
                 public ActionInfo Action { get; set; }
             }
-            public List<ExtraActionInfo> AdditionalActions { get; set; }
+            public List<ExtraActionInfo> AdditionalActions { get; set; } = new List<ExtraActionInfo> { };
 
             public void DrawConfig(uint GameCount)
             {
