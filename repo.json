@@ -25,6 +25,33 @@
         "LastUpdate": 0,
         "DownloadLinkInstall": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin/raw/main/Releases/latest.zip",
         "DownloadLinkTesting": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin/raw/main/Releases/latest.zip",
-        "DownloadLinkUpdate": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin/raw/main/Releases/latest.zip",
-    }
+        "DownloadLinkUpdate": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin/raw/main/Releases/latest.zip"
+    },
+    {
+      "Author": "Prittoto Pritto",
+      "Name": "Prittoto Pritto's Tracery Plugin ♥",
+      "InternalName": "TraceryPlugin",
+      "AssemblyVersion": "1.0.0.1",
+      "TestingAssemblyVersion": "1.0.0.1",
+      "Description": "/trace on its own to open the UI, or add a tracery string to interpret.",
+      "ApplicableVersion": "any",
+      "Tags": [
+        "social",
+        "chat"
+      ],
+    
+      "DalamudApiLevel": 6,
+      "LoadPriority": 0,
+      "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png",
+      "Punchline": "Tracery grammars for FF!",
+
+      "RepoUrl": "https://github.com/PrittotoPritto/TraceryPlugin",
+      "IsHide": "False",
+      "IsTestingExclusive": "False",
+      "DownloadCount": 0,
+      "LastUpdate": 0,
+      "DownloadLinkInstall": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
+      "DownloadLinkTesting": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
+      "DownloadLinkUpdate": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip"
+  }
 ]
