@@ -18,8 +18,11 @@ namespace PissUpPlugin
         [Serializable]
         class HighestAndLowest : IGame
         {
+            public string GetFriendlyName() { return "Highest and Lowest"; }
+
             public string Name { get; set; } = "Game Name";
             public string Tagline { get; set; } = "Tagline";
+            public string Outro { get; set; } = "";
             public uint DiceValue { get; set; }
             public uint Length { get; set; }
             public uint FinalCountdown { get; set; }
@@ -62,13 +65,19 @@ namespace PissUpPlugin
                         Tagline = GameTagline;
                     }
                 }
-
+                {
+                    string GameOutro = Outro;
+                    if (ImGui.InputText($"Outro###outro{GameCount}", ref GameOutro, PluginUI.TextLength))
+                    {
+                        Outro = GameOutro;
+                    }
+                }
                 {
                     int NewDiceValue = (int)DiceValue;
                     bool ValueUsed = NewDiceValue > 0;
                     if (ImGui.Checkbox($"Dice Value###dicevalueb{GameCount}", ref ValueUsed))
                     {
-                        DiceValue = ValueUsed ? 500 : 0;
+                        DiceValue = ValueUsed ? 500u : 0u;
                     }
                     if (ValueUsed)
                     {
@@ -400,6 +409,10 @@ namespace PissUpPlugin
                                     }
                                 }
                             }
+                        }
+                        if (Outro.Length > 0)
+                        {
+                            await SendMessage(ChatTarget + Outro, TaskCancellationToken);
                         }
                         await SendMessage(ChatTarget + SepText, TaskCancellationToken);
                     }

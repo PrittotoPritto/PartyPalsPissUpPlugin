@@ -3,14 +3,14 @@
   <PropertyGroup>
     <Authors>Prittoto Pritto</Authors>
     <Company></Company>
-    <Version>0.0.0.1</Version>
+    <Version>0.0.0.2</Version>
     <Description>Drinking Games.</Description>
     <Copyright></Copyright>
     <PackageProjectUrl>https://github.com/PrittotoPritto/PartyPalsPissUpPlugin</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Platforms>x64</Platforms>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -36,8 +36,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DalamudPackager" Version="2.1.6" />
-    <PackageReference Include="XivCommon" Version="5.0.0" />
+    <PackageReference Include="DalamudPackager" Version="2.1.8" />
+    <PackageReference Include="XivCommon" Version="6.0.2" />
     <Reference Include="FFXIVClientStructs">
       <HintPath>$(DalamudLibPath)FFXIVClientStructs.dll</HintPath>
       <Private>false</Private>

@@ -11,7 +11,7 @@
     "social",
     "chat"
   ],
-  "DalamudApiLevel": 6,
+  "DalamudApiLevel": 7,
   "LoadPriority": 0,
   "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png",
   "Punchline": "Testing out the plugin system with drinking games!"

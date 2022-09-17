@@ -63,8 +63,7 @@ namespace PissUpPlugin
 
             if (ImGui.Begin("Prittoto Pritto's Party Pals Pissup Plugin <3", ref this.visible, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
             {
-                //ImGui.Text($"The random config bool is {this.configuration.SomePropertyToBeSavedAndWithADefault}");
-                ImGui.Text("We've just got the one game for now, but having multiple and saving/loading would be nice.");
+                ImGui.Text("We've just got the one game for now, but having multiple would be nice, but at least I got save/load working below!");
                 ImGui.Spacing();
 
                 bool IsAlliance = configuration.IsAlliance;
