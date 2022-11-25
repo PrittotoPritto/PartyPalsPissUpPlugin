@@ -47,8 +47,8 @@
     "Author": "Prittoto Pritto",
     "Name": "Prittoto Pritto's Tracery Plugin ♥",
     "InternalName": "TraceryPlugin",
-    "AssemblyVersion": "1.0.0.1",
-    "TestingAssemblyVersion": "1.0.0.1",
+    "AssemblyVersion": "1.0.0.3",
+    "TestingAssemblyVersion": "1.0.0.3",
     "Description": "/trace on its own to open the UI, or add a tracery string to interpret.",
     "ApplicableVersion": "any",
     "Tags": [
