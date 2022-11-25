@@ -1,57 +1,73 @@
 [
-    {
-        "Author": "Prittoto Pritto",
-        "Name": "Prittoto Pritto's Party Pals Piss-up Plugin ♥",
-        "InternalName": "PissUpPlugin",
-        "AssemblyVersion": "1.0.0.2",
-        "TestingAssemblyVersion": "1.0.0.2",
-        "Description": "/pppp to open the UI and go from there. /pppp go to run.",
-        "ApplicableVersion": "any",
-        "Tags": [
-          "party",
-          "clubbing",
-          "social",
-          "chat"
-        ],
-        "DalamudApiLevel": 6,
-        "LoadPriority": 0,
-        "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png",
-        "Punchline": "Testing out the plugin system with drinking games!",
+  {
+    "Disabled": false,
+    "Testing": false,
+    "ScheduledForDeletion": false,
+    "InstalledFromUrl": "",
+    "IsThirdParty": false,
+    "EffectiveVersion": "1.0.0.2",
+    "IsAvailableForTesting": false,
+    "Author": "Prittoto Pritto",
+    "Name": "Prittoto Pritto's Party Pals Piss-up Plugin ♥",
+    "Punchline": "Testing out the plugin system with drinking games!",
+    "Description": "/pppp to open the UI and go from there. I'll update this when there's more info.",
+    "Changelog": null,
+    "Tags": [
+      "party",
+      "clubbing",
+      "social",
+      "chat"
+    ],
+    "CategoryTags": null,
+    "IsHide": false,
+    "InternalName": "PissUpPlugin",
+    "AssemblyVersion": "1.0.0.2",
+    "TestingAssemblyVersion": null,
+    "IsTestingExclusive": false,
+    "RepoUrl": null,
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 7,
+    "DownloadCount": 0,
+    "LastUpdate": 0,
+    "DownloadLinkInstall": null,
+    "DownloadLinkUpdate": null,
+    "DownloadLinkTesting": null,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "LoadPriority": 0,
+    "CanUnloadAsync": false,
+    "ImageUrls": null,
+    "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png",
+    "AcceptsFeedback": true,
+    "FeedbackMessage": null,
+    "_isDip17Plugin": false,
+    "_Dip17Channel": null
+  },
+  {
+    "Author": "Prittoto Pritto",
+    "Name": "Prittoto Pritto's Tracery Plugin ♥",
+    "InternalName": "TraceryPlugin",
+    "AssemblyVersion": "1.0.0.1",
+    "TestingAssemblyVersion": "1.0.0.1",
+    "Description": "/trace on its own to open the UI, or add a tracery string to interpret.",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "social",
+      "chat"
+    ],
+  
+    "DalamudApiLevel": 6,
+    "LoadPriority": 0,
+    "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png",
+    "Punchline": "Tracery grammars for FF!",
 
-        "RepoUrl": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin",
-        "IsHide": "False",
-        "IsTestingExclusive": "False",
-        "DownloadCount": 0,
-        "LastUpdate": 0,
-        "DownloadLinkInstall": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin/raw/main/Releases/latest.zip",
-        "DownloadLinkTesting": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin/raw/main/Releases/latest.zip",
-        "DownloadLinkUpdate": "https://github.com/PrittotoPritto/PartyPalsPissUpPlugin/raw/main/Releases/latest.zip"
-    },
-    {
-      "Author": "Prittoto Pritto",
-      "Name": "Prittoto Pritto's Tracery Plugin ♥",
-      "InternalName": "TraceryPlugin",
-      "AssemblyVersion": "1.0.0.1",
-      "TestingAssemblyVersion": "1.0.0.1",
-      "Description": "/trace on its own to open the UI, or add a tracery string to interpret.",
-      "ApplicableVersion": "any",
-      "Tags": [
-        "social",
-        "chat"
-      ],
-    
-      "DalamudApiLevel": 6,
-      "LoadPriority": 0,
-      "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png",
-      "Punchline": "Tracery grammars for FF!",
-
-      "RepoUrl": "https://github.com/PrittotoPritto/TraceryPlugin",
-      "IsHide": "False",
-      "IsTestingExclusive": "False",
-      "DownloadCount": 0,
-      "LastUpdate": 0,
-      "DownloadLinkInstall": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
-      "DownloadLinkTesting": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
-      "DownloadLinkUpdate": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip"
-  }
+    "RepoUrl": "https://github.com/PrittotoPritto/TraceryPlugin",
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "DownloadCount": 0,
+    "LastUpdate": 0,
+    "DownloadLinkInstall": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
+    "DownloadLinkTesting": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip"
+}
 ]
