@@ -6,12 +6,20 @@ using System.Collections.Generic;
 
 namespace PissUpPlugin
 {
+    public enum SendTarget
+    {
+        Party,
+        Alliance,
+        CWLS,
+    }
+
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
         public int Version { get; set; } = 1;
 
-        public bool IsAlliance { get; set; } = false;
+        public SendTarget TargetChat { get; set; } = SendTarget.Party;
+        public UInt16 CWLSNumber { get; set; } = 1;
 
         public IGame CurrentGame = (IGame)new Games.HighestAndLowest
         {

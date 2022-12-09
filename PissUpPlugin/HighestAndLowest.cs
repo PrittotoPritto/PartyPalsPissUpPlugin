@@ -2,9 +2,12 @@
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
+using Dalamud.Utility;
 using ImGuiNET;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +18,98 @@ namespace PissUpPlugin
 
     namespace Games
     {
+        static class Common
+        {
+            public static string GetChatPrefix(SendTarget target, UInt16 number = 0)
+            {
+                //end in a space
+                switch (target)
+                {
+                    case SendTarget.Party:
+                        return "/p ";
+                    case SendTarget.Alliance:
+                        return "/a ";
+                    case SendTarget.CWLS:
+                        Debug.Assert(number != 0);
+                        return "/cwlinkshell{0} ".Format(number);
+                    default:
+                        Debug.Assert(false);
+                        goto case SendTarget.Party;
+                }
+            }
+
+            public static string GetChatRollInstruction(SendTarget target)
+            {
+                switch (target)
+                {
+                    case SendTarget.Party:
+                        return "/dice party";
+                    case SendTarget.Alliance:
+                        return "/dice alliance";
+                    case SendTarget.CWLS:
+                        return "/dice cwlinkshellX (replace X with the number)";
+                    default:
+                        Debug.Assert(false);
+                       goto case SendTarget.Party;
+                }
+            }
+            public static string GetOwnChatRoll(SendTarget target, UInt16 number = 0 )
+            {
+                switch (target)
+                {
+                    case SendTarget.Party:
+                        return "/dice party";
+                    case SendTarget.Alliance:
+                        return "/dice alliance";
+                    case SendTarget.CWLS:
+                        Debug.Assert(number > 0);
+                        return "/dice cwlinkshell{0}".Format(number);
+                    default:
+                        Debug.Assert(false);
+                        goto case SendTarget.Party;
+                }
+            }
+            public static Func<XivChatType, bool> GetMessageTypeFilter(SendTarget target, UInt16 number = 0)
+            {
+                switch (target)
+                {
+                    case SendTarget.CWLS:
+                        XivChatType CWLSType = ((Func<XivChatType>)(() =>
+                        {
+                            switch (number)
+                            {
+                                case 1:
+                                    return XivChatType.CrossLinkShell1;
+                                case 2:
+                                    return XivChatType.CrossLinkShell2;
+                                case 3:
+                                    return XivChatType.CrossLinkShell3;
+                                case 4:
+                                    return XivChatType.CrossLinkShell4;
+                                case 5:
+                                    return XivChatType.CrossLinkShell5;
+                                case 6:
+                                    return XivChatType.CrossLinkShell6;
+                                case 7:
+                                    return XivChatType.CrossLinkShell7;
+                                case 8:
+                                    return XivChatType.CrossLinkShell8;
+                                default:
+                                    Debug.Assert(false);
+                                    goto case 1;
+                            }
+                        }))();
+                        return (XivChatType type) => { return type == CWLSType; };
+                    case SendTarget.Party:
+                    case SendTarget.Alliance:
+                        return (XivChatType type) => { return type == XivChatType.Alliance || type == XivChatType.Party || type == XivChatType.CrossParty; };
+                    default:
+                        Debug.Assert(false);
+                        goto case SendTarget.Party;
+                }
+            }
+        }
+
         [Serializable]
         class HighestAndLowest : IGame
         {
@@ -227,11 +322,15 @@ namespace PissUpPlugin
             public async Task Run(Plugin GamePlugin, CancellationToken TaskCancellationToken, MessageAction SendMessage)
             {
                 //Set up any variables we'll need in the task. 
-                bool IsAlliance = GamePlugin.Configuration.IsAlliance;
+                SendTarget TargetChat = GamePlugin.Configuration.TargetChat;
+                UInt16 CWLSNumber = GamePlugin.Configuration.CWLSNumber;
                 //PartyList.IsAlliance doesn't work, so we need to config this.
-                string ChatTarget = IsAlliance ? "/a " : "/p "; //end in a space.
+                string ChatTarget = Common.GetChatPrefix(TargetChat, CWLSNumber);
                 string NumberAddition = DiceValue > 0 ? $" {DiceValue}" : ""; //leading space if it exists
-                string ChatCommand = (IsAlliance ? "/dice alliance" : "/dice party") + NumberAddition;
+                string ChatInstruction = Common.GetChatRollInstruction(TargetChat) + NumberAddition;
+                string ChatCommand = Common.GetOwnChatRoll(TargetChat, CWLSNumber) + NumberAddition;
+                //Filter for incoming chat messages based on their type:
+                Func<XivChatType, bool> TypeFilter = Common.GetMessageTypeFilter(TargetChat, CWLSNumber);
                 //Set up our chat message delegate ready for attaching.
                 List<Roll> PlayerRolls = new List<Roll>();
                 ExpectedRollStage InitialRollStage = ExpectedRollStage.RollLimit;
@@ -242,7 +341,7 @@ namespace PissUpPlugin
                 =>
                 {
                     //Assumption: all the chat types we're interested in are mutually exclusive.
-                    if (type == XivChatType.Alliance || type == XivChatType.Party || type == XivChatType.CrossParty)
+                    if (TypeFilter(type))
                     {
 
                         //Dalamud.Logging.PluginLog.Log($"Sender: {sender.ToString()}");
@@ -331,7 +430,7 @@ namespace PissUpPlugin
                     {
                         await SendMessage(ChatTarget + Name, TaskCancellationToken);
                         await SendMessage(ChatTarget + Tagline, TaskCancellationToken);
-                        await SendMessage(ChatTarget + $"Use {ChatCommand} to play!", TaskCancellationToken);
+                        await SendMessage(ChatTarget + $"Use '{ChatInstruction}' to play!", TaskCancellationToken);
                         await SendMessage(ChatTarget + SepText, TaskCancellationToken);
 
                         if (HighestAction.Active && HighestAction.Advertise)

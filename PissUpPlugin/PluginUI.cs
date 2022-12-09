@@ -66,13 +66,41 @@ namespace PissUpPlugin
                 ImGui.Text("We've just got the one game for now, but having multiple would be nice, but at least I got save/load working below!");
                 ImGui.Spacing();
 
-                bool IsAlliance = configuration.IsAlliance;
-                ImGui.Checkbox("Use Alliance Chat", ref IsAlliance);
-                if (IsAlliance != configuration.IsAlliance)
+                SendTarget TargetChat = configuration.TargetChat;
+                ImGui.Text("Target Chat"); ImGui.SameLine();
+                if (ImGui.RadioButton("Party", TargetChat == SendTarget.Party))
                 {
-                    configuration.IsAlliance = IsAlliance;
+                    TargetChat = SendTarget.Party;
+                }
+                ImGui.SameLine();
+                if (ImGui.RadioButton("Alliance", TargetChat == SendTarget.Alliance))
+                {
+                    TargetChat = SendTarget.Alliance;
+                }
+                ImGui.SameLine();
+                if (ImGui.RadioButton("CWLS", TargetChat == SendTarget.CWLS))
+                {
+                    TargetChat = SendTarget.CWLS;
+                }
+                if (TargetChat != configuration.TargetChat)
+                {
+                    configuration.TargetChat = TargetChat;
                 }
 
+                ImGui.SameLine();
+                int CWLSNumber = configuration.CWLSNumber;
+                ImGui.PushItemWidth(80);
+                ImGui.InputInt("CWLS Num", ref CWLSNumber, 1);
+                if (CWLSNumber != configuration.CWLSNumber)
+                {
+                    //At  time of writing, the XivChatType only goes from CWLS1-CWLS8
+                    if (CWLSNumber >= 0 && CWLSNumber <= 8)
+                    {
+                        configuration.CWLSNumber = (UInt16)CWLSNumber;
+                    }
+                }
+                ImGui.PopItemWidth();
+                ImGui.Separator();
                 uint GameCount = 0;
                 configuration.CurrentGame.DrawConfig(GameCount);
                 //++GameCount;
