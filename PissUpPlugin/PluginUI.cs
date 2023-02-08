@@ -109,12 +109,12 @@ namespace PissUpPlugin
                 {
                     TargetChat = SendTarget.Say;
                 }
+                */
                 if (TargetChat != configuration.TargetChat)
                 {
                     configuration.TargetChat = TargetChat;
                 }
-                */
-
+                
                 ImGui.Separator();
                 uint GameCount = 0;
                 configuration.CurrentGame.DrawConfig(GameCount);
