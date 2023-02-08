@@ -2,7 +2,7 @@
   "Author": "Prittoto Pritto",
   "Name": "Prittoto Pritto's Party Pals Piss-up Plugin ♥",
   "InternalName": "PissUpPlugin",
-  "AssemblyVersion": "1.0.0.3",
+  "AssemblyVersion": "1.0.0.5",
   "Description": "/pppp to open the UI and go from there. I'll update this when there's more info.",
   "ApplicableVersion": "any",
   "Tags": [
@@ -11,8 +11,11 @@
     "social",
     "chat"
   ],
-  "DalamudApiLevel": 7,
+  "DalamudApiLevel": 8,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
   "LoadPriority": 0,
   "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png",
-  "Punchline": "Testing out the plugin system with drinking games!"
+  "Punchline": "Testing out the plugin system with drinking games!",
+  "AcceptsFeedback": true
 }
