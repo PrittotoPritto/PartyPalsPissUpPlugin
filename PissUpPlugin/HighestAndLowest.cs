@@ -7,6 +7,7 @@ using ImGuiNET;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -32,6 +33,10 @@ namespace PissUpPlugin
                     case SendTarget.CWLS:
                         Debug.Assert(number != 0);
                         return "/cwlinkshell{0} ".Format(number);
+                    case SendTarget.Say:
+                        return "/say ";
+                    case SendTarget.Yell:
+                        return "/yell ";
                     default:
                         Debug.Assert(false);
                         goto case SendTarget.Party;
@@ -48,6 +53,10 @@ namespace PissUpPlugin
                         return "/dice alliance";
                     case SendTarget.CWLS:
                         return "/dice cwlinkshellX (replace X with the number)";
+                    case SendTarget.Say:
+                        return "/random";
+                    case SendTarget.Yell:
+                        return "/random"; //submit in public channels
                     default:
                         Debug.Assert(false);
                        goto case SendTarget.Party;
@@ -64,6 +73,10 @@ namespace PissUpPlugin
                     case SendTarget.CWLS:
                         Debug.Assert(number > 0);
                         return "/dice cwlinkshell{0}".Format(number);
+                    case SendTarget.Yell:
+                        return "/random";
+                    case SendTarget.Say:
+                        return "/random";
                     default:
                         Debug.Assert(false);
                         goto case SendTarget.Party;
@@ -100,6 +113,9 @@ namespace PissUpPlugin
                             }
                         }))();
                         return (XivChatType type) => { return type == CWLSType; };
+                    case SendTarget.Say:
+                    case SendTarget.Yell:
+                        return (XivChatType type) => { return type == XivChatType.Yell || type == XivChatType.Shout || type == XivChatType.Say; };
                     case SendTarget.Party:
                     case SendTarget.Alliance:
                         return (XivChatType type) => { return type == XivChatType.Alliance || type == XivChatType.Party || type == XivChatType.CrossParty; };
@@ -352,7 +368,7 @@ namespace PissUpPlugin
                         if (PlayerOrOwnName.Type == PayloadType.RawText)
                         {
                             //Cut off the special character at the start of your own name
-                            Player = ((TextPayload)PlayerOrOwnName).Text![1..];
+                            Player = (string)((TextPayload)PlayerOrOwnName).Text!.SkipWhile( (char x) => !char.IsLetterOrDigit(x) );
                         }
                         else if (PlayerOrOwnName.Type == PayloadType.Player)
                         {

@@ -82,10 +82,6 @@ namespace PissUpPlugin
                 {
                     TargetChat = SendTarget.CWLS;
                 }
-                if (TargetChat != configuration.TargetChat)
-                {
-                    configuration.TargetChat = TargetChat;
-                }
 
                 ImGui.SameLine();
                 int CWLSNumber = configuration.CWLSNumber;
@@ -100,6 +96,25 @@ namespace PissUpPlugin
                     }
                 }
                 ImGui.PopItemWidth();
+
+                /*
+                ImGui.Text("Untested public chat options: ");
+                ImGui.SameLine();
+                if (ImGui.RadioButton("Yell", TargetChat == SendTarget.Yell))
+                {
+                    TargetChat = SendTarget.Yell;
+                }
+                ImGui.SameLine();
+                if (ImGui.RadioButton("Say", TargetChat == SendTarget.Say))
+                {
+                    TargetChat = SendTarget.Say;
+                }
+                if (TargetChat != configuration.TargetChat)
+                {
+                    configuration.TargetChat = TargetChat;
+                }
+                */
+
                 ImGui.Separator();
                 uint GameCount = 0;
                 configuration.CurrentGame.DrawConfig(GameCount);

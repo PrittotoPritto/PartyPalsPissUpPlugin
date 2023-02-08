@@ -11,6 +11,8 @@ namespace PissUpPlugin
         Party,
         Alliance,
         CWLS,
+        Say,
+        Yell,
     }
 
     [Serializable]
