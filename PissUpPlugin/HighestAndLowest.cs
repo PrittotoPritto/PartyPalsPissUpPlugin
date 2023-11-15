@@ -2,6 +2,7 @@
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
+using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using ImGuiNET;
 using System;
@@ -353,7 +354,7 @@ namespace PissUpPlugin
                 Regex NumberRe = new Regex(
                     DiceValue > 0 ? $"(\\D|^){DiceValue}(\\D|$)" : "^[\\D]+$"
                 ); //Abuse this if we have a zero to check for a string with no values.
-                ChatGui.OnMessageDelegate OnChatMessage = (XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled)
+                IChatGui.OnMessageDelegate OnChatMessage = (XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled)
                 =>
                 {
                     //Assumption: all the chat types we're interested in are mutually exclusive.
