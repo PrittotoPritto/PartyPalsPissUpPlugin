@@ -15,7 +15,7 @@ using XivCommon;
 
 namespace PissUpPlugin
 {
-    public sealed class Plugin : IDalamudPlugin
+    public sealed class Plugin : IDalamudPlugin 
     {
         public string Name => "PissUpPlugin";
 

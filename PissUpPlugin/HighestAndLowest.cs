@@ -327,9 +327,11 @@ namespace PissUpPlugin
             //A roll is expected to and (optional) range rolled, a dice icon, and a value.
             private enum ExpectedRollStage
             {
+                //TranslateBegin,
                 RollLimit,
                 DiceIcon,
                 Value,
+                //TranslateEnd,
                 Done
             }
 
@@ -351,36 +353,57 @@ namespace PissUpPlugin
                 //Set up our chat message delegate ready for attaching.
                 List<Roll> PlayerRolls = new List<Roll>();
                 ExpectedRollStage InitialRollStage = ExpectedRollStage.RollLimit;
-                Regex NumberRe = new Regex(
-                    DiceValue > 0 ? $"(\\D|^){DiceValue}(\\D|$)" : "^[\\D]+$"
-                ); //Abuse this if we have a zero to check for a string with no values.
+                Regex NumberRe = new Regex(DiceValue > 0 ? $"\\D+{DiceValue}\\D+" : "^\\D*$");
                 IChatGui.OnMessageDelegate OnChatMessage = (XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled)
                 =>
                 {
                     //Assumption: all the chat types we're interested in are mutually exclusive.
                     if (TypeFilter(type))
                     {
-
-                        //Dalamud.Logging.PluginLog.Log($"Sender: {sender.ToString()}");
-                        //Dalamud.Logging.PluginLog.Log($"Value: {message.ToString()}");
+                        ///*
+                        Dalamud.Logging.PluginLog.Log($"Sender: {sender.ToString()}");
+                        foreach (var payload in sender.Payloads)
+                        {
+                            Dalamud.Logging.PluginLog.Log($"Sender Payload: {payload.ToString()}");
+                        }
+                        Dalamud.Logging.PluginLog.Log($"Value: {message.ToString()}");
+                        foreach (var payload in message.Payloads)
+                        {
+                            Dalamud.Logging.PluginLog.Log($"Payload: {payload.ToString()}");
+                        }
+                        Dalamud.Logging.PluginLog.Log($"Value: {message.ToString()}");
+                        //*/
                         //Get the player name:
                         string? Player = null;
-                        var PlayerOrOwnName = sender.Payloads[0];
-                        if (PlayerOrOwnName.Type == PayloadType.RawText)
+                        foreach (var PossiblePlayer in sender.Payloads)
                         {
-                            //Cut off the special character at the start of your own name
-                            Player = (string)((TextPayload)PlayerOrOwnName).Text!.SkipWhile( (char x) => !char.IsLetterOrDigit(x) );
-                        }
-                        else if (PlayerOrOwnName.Type == PayloadType.Player)
-                        {
-                            Player = ((PlayerPayload)PlayerOrOwnName).PlayerName;
+                            if (PossiblePlayer.Type == PayloadType.Player)
+                            {
+                                Player = ((PlayerPayload)PossiblePlayer).PlayerName;
+                                break;
+                            }
                         }
                         if (Player == null)
                         {
-                            //Dalamud.Logging.PluginLog.Log($"Unexpected start to message sender: {PlayerOrOwnName.ToString()}");
+                            string? PlayerText = null;
+                            foreach (var PossiblePlayer in sender.Payloads)
+                            {//Ok, this is dirty!
+                                if (PossiblePlayer.Type == PayloadType.RawText)
+                                {
+                                    string? NewText = ((TextPayload)PossiblePlayer).Text;
+                                    if (NewText != null && NewText.Contains(' ') && (PlayerText == null || NewText.Length > PlayerText.Length))
+                                    {
+                                        PlayerText = NewText;
+                                    }
+                                }
+                            }
+                            Player = PlayerText;
+                        }
+                        if (Player == null)
+                        {
                             return;
                         }
-                        //Dalamud.Logging.PluginLog.Log($"Player: {Player}");
+                        // Dalamud.Logging.PluginLog.Log($"Player: {Player}");
                         //See if we've got a dice roll:
                         ExpectedRollStage CurrentStage = InitialRollStage;
                         uint? RollValue = null;

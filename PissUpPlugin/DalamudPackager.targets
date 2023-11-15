@@ -5,6 +5,7 @@
                 ProjectDir="$(ProjectDir)"
                 OutputPath="$(OutputPath)"
                 AssemblyName="$(AssemblyName)"
+				ManifestType="auto"
                 MakeZip="true"/>
     </Target>
 </Project>
