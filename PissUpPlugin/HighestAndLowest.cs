@@ -475,11 +475,11 @@ namespace PissUpPlugin
 
                         if (HighestAction.Active && HighestAction.Advertise)
                         {
-                            await SendMessage(ChatTarget + HighestAction.Advertisment, TaskCancellationToken);
+                            await SendMessage(ChatTarget + "Highest Roll: "+ HighestAction.Advertisment, TaskCancellationToken);
                         }
                         if (LowestAction.Active && LowestAction.Advertise)
                         {
-                            await SendMessage(ChatTarget + LowestAction.Advertisment, TaskCancellationToken);
+                            await SendMessage(ChatTarget + "Lowest Roll: " + LowestAction.Advertisment, TaskCancellationToken);
                         }
                         foreach (var SpecialRoll in AdditionalActions)
                         {

@@ -2,10 +2,6 @@
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using Dalamud.Game;
-using Dalamud.Game.ClientState;
-using Dalamud.Game.ClientState.Party;
-using Dalamud.Game.Gui;
 using System;
 using System.Threading;
 using System.Threading.Channels;
