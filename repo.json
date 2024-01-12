@@ -62,8 +62,8 @@
     "IsTestingExclusive": "False",
     "DownloadCount": 0,
     "LastUpdate": 0,
-    "DownloadLinkInstall": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
-    "DownloadLinkTesting": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/PrittotoPritto/TraceryPlugin/raw/main/Releases/latest.zip"
+    "DownloadLinkInstall": "https://github.com/PrittotoPritto/TraceryPlugin/raw/master/Releases/latest.zip",
+    "DownloadLinkTesting": "https://github.com/PrittotoPritto/TraceryPlugin/raw/master/Releases/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/PrittotoPritto/TraceryPlugin/raw/master/Releases/latest.zip"
   }
 ]
