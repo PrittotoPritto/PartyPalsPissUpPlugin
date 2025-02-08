@@ -6,7 +6,6 @@ using System;
 using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
-using XivCommon;
 
 
 namespace PissUpPlugin
@@ -18,7 +17,7 @@ namespace PissUpPlugin
         private const string commandName = "/pppp";
 
         [PluginService]
-        public static DalamudPluginInterface DalamudPluginInterface { get; private set; }
+        public static IDalamudPluginInterface DalamudPluginInterface { get; private set; }
         [PluginService]
         public static IClientState ClientState { get; private set; }
         [PluginService]
@@ -29,8 +28,6 @@ namespace PissUpPlugin
         public static IFramework Framework { get; private set; }
         [PluginService]
         public static IPartyList PartyList { get; private set; }
-
-        public XivCommonBase Common { get; }
 
         public Configuration Configuration { get; init; }
         private PluginUI PluginUi { get; init; }
@@ -78,11 +75,8 @@ namespace PissUpPlugin
         private DelayedReader MessageSource;
         private CancellationTokenSource TaskCancellationTokenSource = new CancellationTokenSource();
 
-        public Plugin(
-            [RequiredVersion("1.0")] DalamudPluginInterface pluginInterface
-        )
+        public Plugin()
         {
-            this.Common = new XivCommonBase(pluginInterface);
             this.Configuration = DalamudPluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
             this.Configuration.Initialize(DalamudPluginInterface);
             // you might normally want to embed resources and load them from the manifest stream
@@ -154,14 +148,14 @@ namespace PissUpPlugin
             {
                 return;
             }
-            this.Common.Functions.Chat.SendMessage(Message);
+            ChatSender.SendMessage(Message);
         }
         private void OnLogin()
         {
             this.ChatAvailable = true;
         }
 
-        private void OnLogout()
+        private void OnLogout(int type, int code)
         {
             this.ChatAvailable = false;
             ClearTask();

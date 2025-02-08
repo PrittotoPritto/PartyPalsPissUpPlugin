@@ -354,13 +354,13 @@ namespace PissUpPlugin
                 List<Roll> PlayerRolls = new List<Roll>();
                 ExpectedRollStage InitialRollStage = ExpectedRollStage.RollLimit;
                 Regex NumberRe = new Regex(DiceValue > 0 ? $"\\D+{DiceValue}\\D+" : "^\\D*$");
-                IChatGui.OnMessageDelegate OnChatMessage = (XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled)
+                IChatGui.OnMessageDelegate OnChatMessage = (XivChatType type, int senderId, ref SeString sender, ref SeString message, ref bool isHandled)
                 =>
                 {
                     //Assumption: all the chat types we're interested in are mutually exclusive.
                     if (TypeFilter(type))
                     {
-                        ///*
+                        /*
                         Dalamud.Logging.PluginLog.Log($"Sender: {sender.ToString()}");
                         foreach (var payload in sender.Payloads)
                         {
