@@ -12,7 +12,7 @@
       "social",
       "chat"
     ],
-    "DalamudApiLevel": 11,
+    "DalamudApiLevel": 13,
     "LoadRequiredState": 0,
     "LoadSync": false,
     "CanUnloadAsync": false,
@@ -50,7 +50,7 @@
       "chat"
     ],
     "Punchline": "Tracery support for FF14!",
-    "DalamudApiLevel": 11,
+    "DalamudApiLevel": 13,
     "LoadRequiredState": 0,
     "LoadSync": false,
     "CanUnloadAsync": false,
