@@ -2,7 +2,7 @@
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -33,14 +33,14 @@ namespace PissUpPlugin
 
                 {
                     string GameName = Name;
-                    if (ImGui.InputText($"Game Name###gamename{GameCount}", ref GameName, PluginUI.TextLength))
+                    if (ImGui.InputText($"Game Name###gamename{GameCount}", ref GameName, PluginWindow.TextLength))
                     {
                         Name = GameName;
                     }
                 }
                 {
                     string GameTagline = Tagline;
-                    if(ImGui.InputText($"Tagline###tagline{GameCount}", ref GameTagline, PluginUI.TextLength))
+                    if(ImGui.InputText($"Tagline###tagline{GameCount}", ref GameTagline, PluginWindow.TextLength))
                     {
                         Tagline = GameTagline;
                     }
@@ -86,7 +86,7 @@ namespace PissUpPlugin
                         }
                         ImGui.SameLine();
                         string ActionText = Action.Action;
-                        if (ImGui.InputText($"Text###acts{ActionCount}", ref ActionText, PluginUI.TextLength))
+                        if (ImGui.InputText($"Text###acts{ActionCount}", ref ActionText, PluginWindow.TextLength))
                         {
                             ActionChanged = true;
                             Action.Action = ActionText;
@@ -101,7 +101,7 @@ namespace PissUpPlugin
                         }
                         ImGui.SameLine();
                         string Advertisment = Action.Advertisment;
-                        if (ImGui.InputText($"Text###advs{ActionCount}", ref Advertisment, PluginUI.TextLength))
+                        if (ImGui.InputText($"Text###advs{ActionCount}", ref Advertisment, PluginWindow.TextLength))
                         {
                             ActionChanged = true;
                             Action.Advertisment = Advertisment;

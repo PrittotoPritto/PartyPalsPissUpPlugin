@@ -1,4 +1,5 @@
 ﻿using Dalamud.Game.Command;
+using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -29,11 +30,9 @@ namespace PissUpPlugin
         [PluginService]
         public static IPartyList PartyList { get; private set; }
 
+        public readonly WindowSystem WindowSystem = new("PissUpPlugin");
         public Configuration Configuration { get; init; }
-        private PluginUI PluginUi { get; init; }
-
-        public delegate void DrawGameUI();
-        public event DrawGameUI GameUIDraw;
+        private PluginWindow PluginWindow { get; init; }
 
         //Running the game
         private Task? GameSessionInProgress = null;
@@ -80,18 +79,22 @@ namespace PissUpPlugin
             this.Configuration = DalamudPluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
             this.Configuration.Initialize(DalamudPluginInterface);
             // you might normally want to embed resources and load them from the manifest stream
-            this.PluginUi = new PluginUI(this.Configuration);
+            this.PluginWindow = new PluginWindow(this.Configuration);
 
             CommandManager.AddHandler(commandName, new CommandInfo(OnCommand)
             {
                 HelpMessage = "Opens the Piss-up Plugin GUI. More commands may come later"
             });
 
-            DalamudPluginInterface.UiBuilder.Draw += DrawUI;
-            DalamudPluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
+            WindowSystem.AddWindow(this.PluginWindow);
+
 
             this.MessageSink = Channel.CreateUnbounded<string>();
             this.MessageSource = new DelayedReader(this.MessageSink.Reader);
+
+            DalamudPluginInterface.UiBuilder.Draw += WindowSystem.Draw;
+            DalamudPluginInterface.UiBuilder.OpenMainUi += ToggleMainUi;
+            DalamudPluginInterface.UiBuilder.OpenConfigUi += ToggleMainUi;//May add a seperate config UI, IDK
 
             Framework.Update += this.OnFrameworkUpdate;
             ClientState.Login += this.OnLogin;
@@ -121,9 +124,15 @@ namespace PissUpPlugin
             Framework.Update -= this.OnFrameworkUpdate;
             ClientState.Login -= this.OnLogin;
             ClientState.Logout -= this.OnLogout;
-            
+
+            DalamudPluginInterface.UiBuilder.Draw -= WindowSystem.Draw;
+            DalamudPluginInterface.UiBuilder.OpenMainUi -= ToggleMainUi;
+            DalamudPluginInterface.UiBuilder.OpenConfigUi -= ToggleMainUi;
+
+            WindowSystem.RemoveAllWindows();
+            this.PluginWindow.Dispose();
+
             CommandManager.RemoveHandler(commandName);
-            this.PluginUi.Dispose();
         }
 
         private void OnCommand(string command, string args)
@@ -139,7 +148,7 @@ namespace PissUpPlugin
             }
             else
             {
-                this.PluginUi.Visible = true;
+                this.PluginWindow.Toggle();
             }
         }
         public void OnFrameworkUpdate(IFramework framework1)
@@ -160,15 +169,10 @@ namespace PissUpPlugin
             this.ChatAvailable = false;
             ClearTask();
         }
-        private void DrawUI()
+
+        private void ToggleMainUi()
         {
-            this.PluginUi.Draw();
-            GameUIDraw?.Invoke();
-        }
-        
-        private void DrawConfigUI()
-        {
-            this.PluginUi.SettingsVisible = true;
+            PluginWindow.Toggle();
         }
     }
 }

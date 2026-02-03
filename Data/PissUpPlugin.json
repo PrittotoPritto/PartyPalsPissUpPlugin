@@ -1,13 +1,15 @@
 {
   "Author": "Prittoto Pritto",
   "Name": "Prittoto Pritto's Party Pals Piss-up Plugin ♥",
-  "Punchline": "Testing out the plugin system with drinking games!",
-  "Description": "/pppp to open the UI and go from there. I'll update this when there's more info.",
+  "Punchline": "Run drinking games in chat!",
+  "Description": "/pppp to open the UI. Start the game with \"/pppp go\".",
   "InternalName": "PissUpPlugin",
   "ApplicableVersion": "any",
   "Tags": [
     "plugin",
-    "chat"
+    "chat",
+    "social",
+    "clubbing"
   ],
   "IconUrl": "https://ffxiv.gamerescape.com/w/images/9/97/Little_Flirt_Icon.png"
 }
