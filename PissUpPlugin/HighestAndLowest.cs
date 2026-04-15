@@ -496,6 +496,7 @@ namespace PissUpPlugin
                         {
                             await SendMessage(ChatCommand, TaskCancellationToken); //Roll for yourself
                             await Task.Delay((int)Length * 1000, TaskCancellationToken);
+                            //Look at finishing early if we've got rolls from everyone present? IIRC there was some issue.
                         }
                         finally
                         {

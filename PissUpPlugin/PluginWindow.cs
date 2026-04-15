@@ -1,4 +1,7 @@
 ﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Interface;
+using Dalamud.Interface.Components;
+using Dalamud.Interface.ImGuiFileDialog;
 using Dalamud.Interface.Windowing;
 using System;
 using System.Numerics;
@@ -8,6 +11,7 @@ namespace PissUpPlugin
     class PluginWindow : Window, IDisposable
     {
         private Configuration configuration;
+        public FileDialogManager fileDialogManager = new();
 
         // this extra bool exists for ImGui, since you can't ref a property
         private bool visible = false;
@@ -40,6 +44,8 @@ namespace PissUpPlugin
 
         override public void Draw()
         {
+            fileDialogManager.Draw();
+
             ImGui.Text("We've just got the one game type for now, maybe I'll get round to finishing other types in the future!");
             ImGui.Spacing();
 
@@ -111,38 +117,36 @@ namespace PissUpPlugin
                 }
                 if (ImGui.Button("Save"))
                 {
-                    try
+                    TrySave();
+                }
+                ImGui.SameLine();
+                if (ImGuiComponents.IconButton("IconSave", FontAwesomeIcon.Download))
+                {
+                    fileDialogManager.SaveFileDialog("Save ruleset", ".json", configuration.SavePath, ".json", (bool chosen, string path) =>
                     {
-                        JSONSerialisation.SaveFile(configuration.SavePath, configuration.CurrentGame);
-                        throw new Exception("Save Successful");
-                    }
-                    catch (Exception e)
-                    {
-                        Error = e.Message;
-                        ErrorDisplay = DateTime.Now + TimeSpan.FromSeconds(3);
-                    }
+                        if (chosen)
+                        {
+                            configuration.SavePath = path;
+                            TrySave();
+                        }
+                    });
                 }
                 ImGui.SameLine();
                 if (ImGui.Button("Load"))
                 {
-                    try
+                    TryLoad();
+                }
+                ImGui.SameLine();
+                if (ImGuiComponents.IconButton("IconLoad", FontAwesomeIcon.FileUpload))
+                {
+                    fileDialogManager.OpenFileDialog("Load ruleset", ".json", (bool chosen, string path) =>
                     {
-                        IGame? NewGame = JSONSerialisation.LoadFile(configuration.SavePath);
-                        if (NewGame != null)
+                        if (chosen)
                         {
-                            configuration.CurrentGame = NewGame;
-                            throw new Exception("Load Successful");
+                            configuration.SavePath = path;
+                            TryLoad();
                         }
-                        else
-                        {
-                            throw new Exception("Could not load game");
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Error = e.Message;
-                        ErrorDisplay = DateTime.Now + TimeSpan.FromSeconds(3);
-                    }
+                    });
                 }
             }
             ImGui.Separator();
@@ -153,5 +157,41 @@ namespace PissUpPlugin
 
             ImGui.End();
         } //Draw()
+
+        public void TrySave()
+        {
+            try
+            {
+                JSONSerialisation.SaveFile(configuration.SavePath, configuration.CurrentGame);
+                throw new Exception("Save Successful");
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+                ErrorDisplay = DateTime.Now + TimeSpan.FromSeconds(3);
+            }
+
+        }
+        public void TryLoad()
+        {
+            try
+            {
+                IGame? NewGame = JSONSerialisation.LoadFile(configuration.SavePath);
+                if (NewGame != null)
+                {
+                    configuration.CurrentGame = NewGame;
+                    throw new Exception("Load Successful");
+                }
+                else
+                {
+                    throw new Exception("Could not load game");
+                }
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+                ErrorDisplay = DateTime.Now + TimeSpan.FromSeconds(3);
+            }
+        }
     } //PluginWindow
 } //namespace
