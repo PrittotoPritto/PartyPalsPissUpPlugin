@@ -354,9 +354,12 @@ namespace PissUpPlugin
                 List<Roll> PlayerRolls = new List<Roll>();
                 ExpectedRollStage InitialRollStage = ExpectedRollStage.RollLimit;
                 Regex NumberRe = new Regex(DiceValue > 0 ? $"\\D+{DiceValue}\\D+" : "^\\D*$");
-                IChatGui.OnMessageDelegate OnChatMessage = (XivChatType type, int senderId, ref SeString sender, ref SeString message, ref bool isHandled)
+                IChatGui.OnChatMessageDelegate OnChatMessage = (Dalamud.Game.Chat.IChatMessage Message)
                 =>
                 {
+                    XivChatType type = Message.LogKind;
+                    SeString sender = Message.Sender;
+                    SeString message = Message.Message;
                     //Assumption: all the chat types we're interested in are mutually exclusive.
                     if (TypeFilter(type))
                     {
@@ -491,7 +494,7 @@ namespace PissUpPlugin
                         await SendMessage(ChatTarget + StartText, TaskCancellationToken);
                         await SendMessage(ChatTarget + ChatCommand, TaskCancellationToken);
 
-                        Plugin.ChatGui.ChatMessage += OnChatMessage;
+                        Plugin.ChatGui.ChatMessageUnhandled += OnChatMessage;
                         try
                         {
                             await SendMessage(ChatCommand, TaskCancellationToken); //Roll for yourself
@@ -500,7 +503,7 @@ namespace PissUpPlugin
                         }
                         finally
                         {
-                            Plugin.ChatGui.ChatMessage -= OnChatMessage;
+                            Plugin.ChatGui.ChatMessageUnhandled -= OnChatMessage;
                         }
 
                         await SendMessage(ChatTarget + EndText, TaskCancellationToken);
